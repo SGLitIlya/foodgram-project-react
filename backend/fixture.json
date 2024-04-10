@@ -1,0 +1,527 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "last_login": "2024-03-20T02:15:30Z",
+      "is_superuser": true,
+      "username": "foodadmin",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-03-20T02:15:04Z",
+      "email": "foodadmin@foodgram.com",
+      "first_name": "Admin",
+      "last_name": "Foodgram",
+      "password": "pbkdf2_sha256$600000$dTYJa5iSiJ6rxwBi9Cp6Iz$oZHpdlcabterrw3j2nUKLKvxcm34lIRan+7WUlYi7FU=",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "last_login": "2024-03-20T02:22:57.298Z",
+      "is_superuser": false,
+      "username": "ramsay",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-03-20T02:22:53.531Z",
+      "email": "ramsay@google.com",
+      "first_name": "Гордон",
+      "last_name": "Рамзи",
+      "password": "pbkdf2_sha256$600000$QDCYyVV8Q6XAUdpm0JbP58$nD28tKKQ1yCeKYac/sVvlA47OhZOJi1KeXOrId8MInE=",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "last_login": "2024-03-20T02:44:27.104Z",
+      "is_superuser": false,
+      "username": "hozyaika",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-03-20T02:44:22.013Z",
+      "email": "hozyaika@gm.com",
+      "first_name": "Хозяйка",
+      "last_name": "Дома",
+      "password": "pbkdf2_sha256$600000$KcjGKAuHd1ixEfuU5tL9gT$symeG6hCbAo0PM6WFQrzU/N4OW2jSLS1NhTteVKQVrc=",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "last_login": "2024-03-20T02:49:56.625Z",
+      "is_superuser": false,
+      "username": "novice",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-03-20T02:49:50.258Z",
+      "email": "novice@y.com",
+      "first_name": "Повар",
+      "last_name": "Новичок",
+      "password": "pbkdf2_sha256$600000$B8QHW7ofWZLVesVtCwCD9N$opcofju/1bZRXjwIXWzz6mvmcwg8brZhd+5zbn8bQp8=",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.followrelationship",
+    "pk": 1,
+    "fields": {
+      "to_user": 3,
+      "from_user": 4,
+      "created_at": "2024-03-20T02:48:44.433Z"
+    }
+  },
+  {
+    "model": "users.followrelationship",
+    "pk": 2,
+    "fields": {
+      "to_user": 4,
+      "from_user": 5,
+      "created_at": "2024-03-20T02:52:07.555Z"
+    }
+  },
+  {
+    "model": "users.followrelationship",
+    "pk": 3,
+    "fields": {
+      "to_user": 3,
+      "from_user": 5,
+      "created_at": "2024-03-20T02:52:10.609Z"
+    }
+  },
+  {
+    "model": "recipes.tag",
+    "pk": 1,
+    "fields": {
+      "name": "Пикантно",
+      "color": "#C21818",
+      "slug": "hot"
+    }
+  },
+  {
+    "model": "recipes.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Говядина",
+      "color": "#622121",
+      "slug": "beef"
+    }
+  },
+  {
+    "model": "recipes.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Курица",
+      "color": "#FCF563",
+      "slug": "chicken"
+    }
+  },
+  {
+    "model": "recipes.tag",
+    "pk": 4,
+    "fields": {
+      "name": "Грибы",
+      "color": "#4A3737",
+      "slug": "mushrooms"
+    }
+  },
+  {
+    "model": "recipes.tag",
+    "pk": 5,
+    "fields": {
+      "name": "Паста",
+      "color": "#EBD376",
+      "slug": "pasta"
+    }
+  },
+  {
+    "model": "recipes.tag",
+    "pk": 6,
+    "fields": {
+      "name": "Лосось",
+      "color": "#FF6E44",
+      "slug": "salmon"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 1,
+    "fields": {
+      "name": "Лосось",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 2,
+    "fields": {
+      "name": "Говяжье филе",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 3,
+    "fields": {
+      "name": "Говяжья вырезка",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 4,
+    "fields": {
+      "name": "Репчатый лук",
+      "measurement_unit": "шт"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 5,
+    "fields": {
+      "name": "Шампиньоны",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 6,
+    "fields": {
+      "name": "Растительное масло",
+      "measurement_unit": "мл"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 7,
+    "fields": {
+      "name": "Молотый черный перец",
+      "measurement_unit": "щепотка"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 8,
+    "fields": {
+      "name": "Соль",
+      "measurement_unit": "щепотка"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 9,
+    "fields": {
+      "name": "Макароны",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 10,
+    "fields": {
+      "name": "Куриное яйцо",
+      "measurement_unit": "шт"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 12,
+    "fields": {
+      "name": "Куриное филе",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 13,
+    "fields": {
+      "name": "Красный перец",
+      "measurement_unit": "шт"
+    }
+  },
+  {
+    "model": "recipes.ingredient",
+    "pk": 14,
+    "fields": {
+      "name": "Паста тальятелле",
+      "measurement_unit": "грамм"
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 1,
+    "fields": {
+      "author": 3,
+      "name": "Паста с лососем",
+      "text": "Паста с лососем — настоящий подарок для гурмана и… ленивой хозяйки, ведь готовится блюдо невероятно просто и быстро, а вкус имеет поистине потрясающий!",
+      "cooking_time": 20,
+      "image": "api/imgs/5f9b4f7b-37ef-4861-93c7-1cbaf33bc98f.webp",
+      "created_at": "2024-03-20T02:40:03.078Z",
+      "tags": [
+        6,
+        5
+      ],
+      "favorites": [
+        3
+      ],
+      "shopping_cart": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 2,
+    "fields": {
+      "author": 3,
+      "name": "Макароны по-флотски",
+      "text": "Макароны по-флотски — это традиционное русское блюдо, которое обычно готовят из макаронных изделий (чаще всего спиральной формы) с мясным соусом. Главный ингредиент соуса — фарш из мяса (обычно говядины или свинины), который обжаривается с луком, морковью и часто с добавлением томатной пасты или помидоров. Затем к этому соусу добавляются приправы и специи, такие как соль, перец, чеснок и зелень. Готовые макароны с соусом подаются горячими и часто посыпаются тертым сыром.",
+      "cooking_time": 30,
+      "image": "api/imgs/7a13bfd7-df7a-43de-a14b-2040249258bc.webp",
+      "created_at": "2024-03-20T02:43:20.424Z",
+      "tags": [
+        2,
+        5
+      ],
+      "favorites": [
+        4,
+        3
+      ],
+      "shopping_cart": [
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 3,
+    "fields": {
+      "author": 4,
+      "name": "Мясной каламбур из курицы и говядины",
+      "text": "Мясной каламбур из курицы и говядины - это аппетитное блюдо, в котором сочетаются нежное куриное мясо и сочное говяжье. Обычно куриное филе и говяжье мясо нарезают тонкими ломтиками, затем маринуют с различными специями и соусами. После этого мясо обжаривается на сковороде или гриле до золотистой корочки. Такое блюдо обладает насыщенным вкусом и ароматом, идеально подходит как для ужина, так и для праздничного стола.",
+      "cooking_time": 60,
+      "image": "api/imgs/c3b60db1-3682-477a-bf55-dbd1535e0839.webp",
+      "created_at": "2024-03-20T02:46:34.098Z",
+      "tags": [
+        2,
+        3,
+        1
+      ],
+      "favorites": [
+        4
+      ],
+      "shopping_cart": [
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 4,
+    "fields": {
+      "author": 4,
+      "name": "Говядина «Веллингтон» с грибами",
+      "text": "Говядина \"Веллингтон\" с грибами - это изысканное блюдо, в котором нежное говяжье филе обворачивается в слои пасты филло или слоеного теста, а также обычно с добавлением грибов и ароматных специй. Обычно начинка состоит из тонко нарезанного говяжьего филе, обжаренных с грибами, луком и травами, такими как тимьян или петрушка. Затем мясо заворачивается в тесто и запекается в духовке до золотистой корочки. Говядина \"Веллингтон\" с грибами - это великолепное блюдо, которое прекрасно подходит для особых случаев и ужинов в кругу семьи или друзей.",
+      "cooking_time": 100,
+      "image": "api/imgs/a8999b40-afa0-403f-8f9e-1effebe8d9de.webp",
+      "created_at": "2024-03-20T02:48:26.549Z",
+      "tags": [
+        2,
+        4,
+        1
+      ],
+      "favorites": [
+        4,
+        5
+      ],
+      "shopping_cart": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "recipes.recipe",
+    "pk": 5,
+    "fields": {
+      "author": 5,
+      "name": "Куриное филе",
+      "text": "Просто куриное филе",
+      "cooking_time": 200,
+      "image": "api/imgs/74d94988-e662-44d2-a4ed-93449fe09f7b.jpg",
+      "created_at": "2024-03-20T02:51:09.586Z",
+      "tags": [
+        3
+      ],
+      "favorites": [
+        5
+      ],
+      "shopping_cart": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 1,
+    "fields": {
+      "ingredient": 1,
+      "recipe": 1,
+      "amount": 300
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 2,
+    "fields": {
+      "ingredient": 14,
+      "recipe": 1,
+      "amount": 250
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 3,
+    "fields": {
+      "ingredient": 8,
+      "recipe": 1,
+      "amount": 1
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 4,
+    "fields": {
+      "ingredient": 6,
+      "recipe": 1,
+      "amount": 50
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 5,
+    "fields": {
+      "ingredient": 9,
+      "recipe": 2,
+      "amount": 200
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 6,
+    "fields": {
+      "ingredient": 2,
+      "recipe": 2,
+      "amount": 100
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 7,
+    "fields": {
+      "ingredient": 4,
+      "recipe": 2,
+      "amount": 1
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 8,
+    "fields": {
+      "ingredient": 8,
+      "recipe": 2,
+      "amount": 1
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 9,
+    "fields": {
+      "ingredient": 2,
+      "recipe": 3,
+      "amount": 500
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 10,
+    "fields": {
+      "ingredient": 12,
+      "recipe": 3,
+      "amount": 600
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 11,
+    "fields": {
+      "ingredient": 7,
+      "recipe": 3,
+      "amount": 1
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 12,
+    "fields": {
+      "ingredient": 4,
+      "recipe": 3,
+      "amount": 2
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 13,
+    "fields": {
+      "ingredient": 2,
+      "recipe": 4,
+      "amount": 1500
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 14,
+    "fields": {
+      "ingredient": 5,
+      "recipe": 4,
+      "amount": 400
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 15,
+    "fields": {
+      "ingredient": 10,
+      "recipe": 4,
+      "amount": 3
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 16,
+    "fields": {
+      "ingredient": 13,
+      "recipe": 4,
+      "amount": 3
+    }
+  },
+  {
+    "model": "recipes.ingredientquantity",
+    "pk": 17,
+    "fields": {
+      "ingredient": 12,
+      "recipe": 5,
+      "amount": 1000
+    }
+  }
+]

@@ -13,7 +13,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ../backend/
+    image: ilay3000/foodgram_backend
     depends_on:
       - db
     env_file: .env
@@ -23,20 +23,17 @@ services:
     environment:
       WAIT_HOSTS: foodgram_pg:5432
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: ilay3000/foodgram_frontend
     volumes:
       - frontend:/app/result_build/build/
   nginx:
-    build: ./
+    image: ilay3000/foodgram_gateway
     depends_on:
       - frontend
       - backend
     ports:
-      - "8000:80"
+      - "10000:80"
     volumes:
       - frontend:/var/www/frontend/
       - static:/var/html/static/
       - media:/var/html/media/
-      - ./docs/:/var/html/api/docs/
