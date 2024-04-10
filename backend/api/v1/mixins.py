@@ -4,7 +4,9 @@ from rest_framework.response import Response
 
 
 class CustomBase64ImageField(Base64ImageField):
-    """Настраиваемое поле для предотвращения возврата None вместо пустой строки."""
+    """Настраиваемое поле для предотвращения
+       возврата None вместо пустой строки.
+    """
 
     EMPTY_VALUES = ()
 
