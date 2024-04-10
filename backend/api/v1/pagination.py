@@ -2,6 +2,6 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class CustomPageNumberPagination(PageNumberPagination):
-    """Enables page size alternating by passing limit in URL params."""
+    """Включает изменение размера страницы путем передачи ограничения в параметрах URL-адреса."""
 
     page_size_query_param = 'limit'

@@ -5,7 +5,7 @@ from core import constants
 
 
 class User(AbstractUser):
-    """Custom user model."""
+    """Модель пользователя."""
 
     email = models.EmailField(
         'Электронная почта',

@@ -4,13 +4,13 @@ from rest_framework.response import Response
 
 
 class CustomBase64ImageField(Base64ImageField):
-    """Custom field to prevent returning None instead of empty string."""
+    """Настраиваемое поле для предотвращения возврата None вместо пустой строки."""
 
     EMPTY_VALUES = ()
 
 
 class WriteMethodsMixinView:
-    """Mixin with add and remove methods for objects in ViewSets."""
+    """Миксин с методами добавления и удаления объектов в ViewSets."""
 
     @staticmethod
     def add_obj(serializer):

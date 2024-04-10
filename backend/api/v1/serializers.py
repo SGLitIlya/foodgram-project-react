@@ -18,7 +18,7 @@ User = get_user_model()
 
 
 class IngredientsField(serializers.Field):
-    """Custom field for ingredients."""
+    """Настраиваемое поле для ингредиентов."""
 
     default_error_messages = {
         'empty_list': 'Не выбрано ни одного ингредиента.',
@@ -70,7 +70,7 @@ class IngredientsField(serializers.Field):
 
 
 class TagsField(serializers.Field):
-    """Custom field for tags."""
+    """Настраиваемое поле для тегов."""
 
     default_error_messages = {
         'empty_list': 'Не выбрано ни одного тега.',
@@ -131,7 +131,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class SubscriptionSerializer(UserSerializer):
-    """Serializer for subscriptions endpoints."""
+    """Сериализатор для конечных точек подписок."""
 
     recipes = serializers.SerializerMethodField()
     recipes_count = serializers.SerializerMethodField()
@@ -172,7 +172,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class ShortRecipeSerializer(serializers.ModelSerializer):
-    """Serializer for providing recipe shortcut in some endpoints."""
+    """Сериализатор для предоставления ярлыков рецептов в некоторых конечных точках."""
 
     image = CustomBase64ImageField()
 
@@ -183,7 +183,7 @@ class ShortRecipeSerializer(serializers.ModelSerializer):
 
 
 class ReadRecipeSerializer(ShortRecipeSerializer):
-    """Serializer for providing full recipe data."""
+    """Сериализатор для предоставления полных данных рецепта."""
 
     ingredients = IngredientsField()
     tags = TagsField()
@@ -213,7 +213,7 @@ class ReadRecipeSerializer(ShortRecipeSerializer):
 
 
 class WriteRecipeSerializer(ReadRecipeSerializer):
-    """Serializer for saving and updating recipes."""
+    """Сериализатор для сохранения и обновления рецептов."""
 
     @staticmethod
     def ingredientquantity_bulk_create(recipe, ingredients):
@@ -254,7 +254,7 @@ class WriteRecipeSerializer(ReadRecipeSerializer):
 
 
 class SaveFavoriteSerializer(serializers.ModelSerializer):
-    """Serializer for saving user's favorite recipes."""
+    """Сериализатор для сохранения любимых рецептов пользователя."""
 
     class Meta:
         model = FavoriteRecipes
@@ -265,15 +265,14 @@ class SaveFavoriteSerializer(serializers.ModelSerializer):
 
 
 class SaveShoppingCartSerializer(SaveFavoriteSerializer):
-    """Serializer for adding recipes to user's shopping cart."""
-
+    """Сериализатор для добавления рецептов в корзину пользователя."""
     class Meta:
         model = ShoppingCart
         fields = ['user', 'recipe']
 
 
 class SaveSubscriptionSerializer(serializers.ModelSerializer):
-    """Serializer for saving users subscriptions."""
+    """Сериализатор для сохранения подписок пользователей."""
 
     class Meta:
         model = FollowRelationship

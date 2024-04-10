@@ -7,7 +7,7 @@ from recipes.models import Ingredient
 
 
 class Command(BaseCommand):
-    """Command to load data from json files to DB."""
+    """Команда для загрузки данных из json-файлов в БД."""
 
     FILENAMES_OF_MODELS = [
         ('ingredients.json', Ingredient),
