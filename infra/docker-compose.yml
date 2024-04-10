@@ -19,7 +19,7 @@ services:
     env_file: .env
     volumes:
       - static:/backend/collected_static/
-      - media:/backend/media
+      - media:/backend/media/
     environment:
       WAIT_HOSTS: foodgram_pg:5432
   frontend:
