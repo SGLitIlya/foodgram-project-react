@@ -172,7 +172,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class ShortRecipeSerializer(serializers.ModelSerializer):
-    """Сериализатор для предоставления ярлыков рецептов в некоторых конечных точках."""
+    """Сериализатор для предоставления ярлыков рецептов."""
 
     image = CustomBase64ImageField()
 
