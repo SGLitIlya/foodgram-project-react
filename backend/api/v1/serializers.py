@@ -37,11 +37,17 @@ class IngredientsField(serializers.Field):
     }
 
     def to_representation(self, ingredients):
+        """Преобразует словарь ингредиентов в QuerySet, аннотируя его количеством."""
+
         return ingredients.values().annotate(
             amount=F('ingredientquantity__amount')
         )
 
     def to_internal_value(self, ingredients):
+        """
+        Преобразует внутреннее значение ингредиентов, проверяя их корректность.
+        """
+
         if not ingredients:
             self.fail('empty_list')
 
@@ -82,9 +88,13 @@ class TagsField(serializers.Field):
     }
 
     def to_representation(self, tags):
+        """Настраиваемое поле для тегов."""
+
         return tags.values()
 
     def to_internal_value(self, tags):
+        """Преобразует внутреннее значение тегов, проверяя их корректность."""
+
         if not tags:
             self.fail('empty_list')
 
@@ -122,6 +132,10 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
     def get_is_subscribed(self, user):
+        """
+        Возвращает информацию о том, подписан ли текущий пользователь 
+        на указанного пользователя.
+        """
         request = self.context.get('request')
         return (
             request
@@ -143,6 +157,8 @@ class SubscriptionSerializer(UserSerializer):
         extra_kwargs = {'password': {'write_only': True}}
 
     def get_recipes(self, user):
+        """Получает рецепты пользователя с учетом ограничения на количество."""
+
         limit = self.context.get('request').GET.get('recipes_limit')
         try:
             recipes = user.recipes.all()[: int(limit)]
@@ -153,9 +169,13 @@ class SubscriptionSerializer(UserSerializer):
         return serializer.data
 
     def get_recipes_count(self, user):
+        """Получает количество рецептов пользователя."""
+
         return user.recipes.count()
 
     def to_representation(self, user):
+        """Возвращает сериализованное представление пользователя."""
+
         return super(UserSerializer, self).to_representation(user)
 
 
@@ -196,6 +216,8 @@ class ReadRecipeSerializer(ShortRecipeSerializer):
         exclude = ['favorites', 'shopping_cart', 'created_at']
 
     def get_is_favorited(self, recipe):
+        """Проверяет, добавлен ли рецепт в избранное текущим пользователем."""
+
         request = self.context.get('request')
         return (
             request
@@ -204,6 +226,8 @@ class ReadRecipeSerializer(ShortRecipeSerializer):
         )
 
     def get_is_in_shopping_cart(self, recipe):
+        """Проверяет, добавлен ли рецепт в список покупок текущим пользователем."""
+
         request = self.context.get('request')
         return (
             request
@@ -217,7 +241,7 @@ class WriteRecipeSerializer(ReadRecipeSerializer):
 
     @staticmethod
     def ingredientquantity_bulk_create(recipe, ingredients):
-        """Bulk creation for related ingredients."""
+        """Массовое создание сопутствующих ингредиентов."""
 
         IngredientQuantity.objects.bulk_create(
             [
@@ -279,6 +303,8 @@ class SaveSubscriptionSerializer(serializers.ModelSerializer):
         exclude = ['created_at']
 
     def validate(self, data):
+        """Проверяет корректность данных подписки."""
+
         if data['from_user'] == data['to_user']:
             raise serializers.ValidationError(
                 'Нельзя подписаться на самого себя!'
@@ -286,6 +312,8 @@ class SaveSubscriptionSerializer(serializers.ModelSerializer):
         return data
 
     def to_representation(self, instance):
+        """Преобразует экземпляр подписки в его представление."""
+
         return SubscriptionSerializer(
             instance.to_user, context={'request': self.context.get('request')}
         ).data

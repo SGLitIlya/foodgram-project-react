@@ -1,6 +1,7 @@
-from django.contrib import admin
+from django.contrib import admin, Group
 
 from users.models import FollowRelationship, User
+
 
 
 class FollowToInline(admin.TabularInline):
@@ -21,3 +22,4 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(FollowRelationship)
+admin.site.unregister(Group)
