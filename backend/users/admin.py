@@ -3,7 +3,6 @@ from django.contrib import admin, Group
 from users.models import FollowRelationship, User
 
 
-
 class FollowToInline(admin.TabularInline):
     model = FollowRelationship
     fk_name = 'from_user'

@@ -37,7 +37,7 @@ class IngredientsField(serializers.Field):
     }
 
     def to_representation(self, ingredients):
-        """Преобразует словарь ингредиентов в QuerySet, аннотируя его количеством."""
+        """Преобразует словарь ингредиентов в QuerySet"""
 
         return ingredients.values().annotate(
             amount=F('ingredientquantity__amount')
@@ -136,6 +136,7 @@ class UserSerializer(serializers.ModelSerializer):
         Возвращает информацию о том, подписан ли текущий пользователь 
         на указанного пользователя.
         """
+
         request = self.context.get('request')
         return (
             request
@@ -226,7 +227,7 @@ class ReadRecipeSerializer(ShortRecipeSerializer):
         )
 
     def get_is_in_shopping_cart(self, recipe):
-        """Проверяет, добавлен ли рецепт в список покупок текущим пользователем."""
+        """Проверяет, добавлен ли рецепт в список покупок пользователем."""
 
         request = self.context.get('request')
         return (
