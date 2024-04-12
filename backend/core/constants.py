@@ -12,8 +12,8 @@ ING_MES_MAX_LEN: int = 200
 TAG_COLOR_MAX_LEN: int = 7
 RECIPE_CKN_TIME_MIN: int = 1
 ING_AMOUNT_MIN: int = 1
-RECIPE_CKN_TIME_MAX: int = 32000
-ING_AMOUNT_MAX: int = 32000
+RECIPE_CKN_TIME_MAX: int = 32
+ING_AMOUNT_MAX: int = 32
 
 RECIPE_CKN_TIME_MIN_ERR_MSG: str = (
     f'Время приготовления рецепта не может быть < {RECIPE_CKN_TIME_MIN}.'
