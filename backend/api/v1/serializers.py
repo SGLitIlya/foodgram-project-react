@@ -133,8 +133,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_is_subscribed(self, user):
         """
-        Возвращает информацию о том, подписан ли текущий пользователь 
-        на указанного пользователя.
+        Возвращает информацию о подписки пользователя.
         """
 
         request = self.context.get('request')
