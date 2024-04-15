@@ -129,7 +129,7 @@ class UserSerializer(serializers.ModelSerializer):
             'password',
             'first_name',
             'last_name',
-            'is_subscribed',]
+            'is_subscribed', ]
 
         read_only_fields = ['id', 'is_subscribed']
         extra_kwargs = {'password': {'write_only': True}}

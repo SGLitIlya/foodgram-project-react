@@ -172,7 +172,7 @@ class IngredientQuantity(models.Model):
                 constants.ING_AMOUNT_MIN, constants.ING_AMOUNT_MIN_ERR_MSG
             ),
             MaxValueValidator(
-               constants.ING_AMOUNT_MAX, constants.ING_AMOUNT_MAX_ERR_MSG 
+                constants.ING_AMOUNT_MAX, constants.ING_AMOUNT_MAX_ERR_MSG
             ),
         ],
     )
