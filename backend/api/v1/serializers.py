@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db.models import F
 from django.db.transaction import atomic
+from django.forms import ValidationError
 from rest_framework import serializers
 
 from api.v1.mixins import CustomBase64ImageField
@@ -65,7 +66,9 @@ class IngredientsField(serializers.Field):
                 self.fail('ing_not_exist', ing_id=ing_id)
 
             if int(ingredient['amount']) < 1:
-                self.fail('amount_less_than_1', ing_id=ing_id)
+                raise ValidationError(
+                    "Убедитесь, что это значение больше либо равно 1."
+                )
 
             if ing_id in used_ingredients:
                 self.fail('ing_repeat', ing_id=ing_id)
@@ -119,16 +122,16 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = (
+        fields = [
             'email',
             'id',
             'username',
             'password',
             'first_name',
             'last_name',
-            'is_subscribed',
-        )
-        read_only_fields = ('id', 'is_subscribed',)
+            'is_subscribed',]
+
+        read_only_fields = ['id', 'is_subscribed']
         extra_kwargs = {'password': {'write_only': True}}
 
     def get_is_subscribed(self, user):
@@ -153,7 +156,7 @@ class SubscriptionSerializer(UserSerializer):
     class Meta:
         model = User
         fields = UserSerializer.Meta.fields + ['recipes', 'recipes_count']
-        read_only_fields = ['id']
+        read_only_fields = ('id')
         extra_kwargs = {'password': {'write_only': True}}
 
     def get_recipes(self, user):
@@ -182,23 +185,23 @@ class SubscriptionSerializer(UserSerializer):
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ['id', 'name', 'measurement_unit']
+        fields = ('id', 'name', 'measurement_unit')
 
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'color', 'slug']
+        fields = ('id', 'name', 'color', 'slug')
 
 
 class ShortRecipeSerializer(serializers.ModelSerializer):
     """Сериализатор для предоставления ярлыков рецептов."""
 
-    image = CustomBase64ImageField()
+    image = CustomBase64ImageField(required=False, allow_null=True)
 
     class Meta:
         model = Recipe
-        fields = ['id', 'name', 'image', 'cooking_time']
+        fields = ('id', 'name', 'image', 'cooking_time')
         read_only_fields = ['__all__']
 
 
@@ -263,6 +266,7 @@ class WriteRecipeSerializer(ReadRecipeSerializer):
         recipe.save()
         recipe.tags.set(tags)
         self.ingredientquantity_bulk_create(recipe, ingredients)
+        request.user.favorites.add(recipe.id)
         return recipe
 
     @atomic
@@ -281,7 +285,7 @@ class SaveFavoriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FavoriteRecipes
-        fields = ['user', 'recipe']
+        fields = ('user', 'recipe')
 
     def to_representation(self, instance):
         return ShortRecipeSerializer(instance.recipe).data
@@ -291,7 +295,7 @@ class SaveShoppingCartSerializer(SaveFavoriteSerializer):
     """Сериализатор для добавления рецептов в корзину пользователя."""
     class Meta:
         model = ShoppingCart
-        fields = ['user', 'recipe']
+        fields = ('user', 'recipe')
 
 
 class SaveSubscriptionSerializer(serializers.ModelSerializer):
@@ -299,7 +303,7 @@ class SaveSubscriptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FollowRelationship
-        exclude = ['created_at']
+        exclude = ('created_at')
 
     def validate(self, data):
         """Проверяет корректность данных подписки."""
