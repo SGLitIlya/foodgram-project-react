@@ -119,7 +119,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = [
+        fields = (
             'email',
             'id',
             'username',
@@ -127,8 +127,8 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'is_subscribed',
-        ]
-        read_only_fields = ['id', 'is_subscribed']
+        )
+        read_only_fields = ('id', 'is_subscribed',)
         extra_kwargs = {'password': {'write_only': True}}
 
     def get_is_subscribed(self, user):
@@ -263,7 +263,6 @@ class WriteRecipeSerializer(ReadRecipeSerializer):
         recipe.save()
         recipe.tags.set(tags)
         self.ingredientquantity_bulk_create(recipe, ingredients)
-        request.user.favorites.add(recipe.id)
         return recipe
 
     @atomic
