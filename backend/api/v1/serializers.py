@@ -263,7 +263,6 @@ class WriteRecipeSerializer(ReadRecipeSerializer):
         recipe.save()
         recipe.tags.set(tags)
         self.ingredientquantity_bulk_create(recipe, ingredients)
-        #request.user.favorites.add(recipe.id)
         return recipe
 
     @atomic
