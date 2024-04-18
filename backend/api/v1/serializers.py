@@ -66,9 +66,7 @@ class IngredientsField(serializers.Field):
                 self.fail('ing_not_exist', ing_id=ing_id)
 
             if int(ingredient['amount']) < 1:
-                raise ValidationError(
-                    "Убедитесь, что это значение больше либо равно 1."
-                )
+                self.fail('amount_less_than_1', ing_id=ing_id)
 
             if ing_id in used_ingredients:
                 self.fail('ing_repeat', ing_id=ing_id)
