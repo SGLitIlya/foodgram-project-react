@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models import F
 from django.db.transaction import atomic
-from django.forms import ValidationError
 from rest_framework import serializers
 
 from api.v1.mixins import CustomBase64ImageField
@@ -264,7 +263,7 @@ class WriteRecipeSerializer(ReadRecipeSerializer):
         recipe.save()
         recipe.tags.set(tags)
         self.ingredientquantity_bulk_create(recipe, ingredients)
-        request.user.favorites.add(recipe.id)
+        #request.user.favorites.add(recipe.id)
         return recipe
 
     @atomic
